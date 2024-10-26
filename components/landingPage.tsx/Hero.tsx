@@ -12,7 +12,7 @@ function Hero() {
     <div className='hero'>
         <div className='flex-1 flex-wrap pt-36 padding-x'>
             <h1 className='hero__title'>
-                Find, book, or rent a car -- quickly and easily!
+                Find, book, rent a car -- quickly and super easily!
             </h1>
             <p className='hero__subtitle'>
                 Streamline your car rental experience and enjoy instant access to the best deals with our effortless booking process.
@@ -26,8 +26,8 @@ function Hero() {
         <div className='hero__image-container'>
             <div className='hero__image'>
                 <Image src="/hero.png" alt="hero-image" fill className='object-contain'/>
-                <div className='hero__image-overlay'/>
             </div>
+            <div className='hero__image-overlay'/>
         </div>
     </div>
   )
