@@ -1,9 +1,21 @@
 import { Hero, Filter, CarCard } from "@/components";
 import SearchBar from "@/components/SearchBar";
+import { SearchFilterProps } from "@/types";
 import { fetchCars } from "@/utils";
 
-export default async function Home() {
-  const allCars = await fetchCars();
+interface SearchParams {
+  searchParams: SearchFilterProps;
+}
+
+export default async function Home({ searchParams } : SearchParams) {
+  const { manufacturer, year, model, limit, fuel } = await searchParams;
+  const allCars = await fetchCars({
+    manufacturer: manufacturer || '',
+    year: year || 2022,
+    fuel: fuel || '',
+    limit: limit || 20,
+    model: model || '',
+  });
   console.log(allCars);
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
   
@@ -16,7 +28,7 @@ export default async function Home() {
           <p>Explore the cars you might like</p>
         </div>
 
-        <div className='w-full flex flex-wrap items-center xl:justify-between gap-8'>
+        <div className='w-full flex flex-wrap mt-8 items-center xl:justify-between gap-8'>
           <SearchBar/>
           <div className="home__filter-container">
             <Filter title="fuel"/>
